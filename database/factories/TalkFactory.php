@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Talk;
 use App\Models\User;
-use App\TalkType;
+use App\Enums\TalkType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
