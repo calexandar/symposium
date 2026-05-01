@@ -24,7 +24,7 @@ class TalkController extends Controller
      */
     public function create()
     {
-        return view('talks.create', ['talk' => new Talk()]);
+        return view('talks.create', ['talk' => new Talk]);
     }
 
     /**
@@ -42,6 +42,7 @@ class TalkController extends Controller
         ]);
 
         Auth::user()->talks()->create($validated);
+
         return redirect()->route('talks.index');
     }
 
@@ -71,9 +72,9 @@ class TalkController extends Controller
      */
     public function update(UpdateTalkRequest $request, Talk $talk)
     {
-    
 
         $talk->update($request->validated());
+
         return redirect()->route('talks.show', ['talk' => $talk]);
     }
 
@@ -87,6 +88,7 @@ class TalkController extends Controller
         }
 
         $talk->delete();
+
         return redirect()->route('talks.index');
     }
 }

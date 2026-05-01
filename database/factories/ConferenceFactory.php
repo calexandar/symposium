@@ -21,9 +21,10 @@ class ConferenceFactory extends Factory
         $endsAt = (clone $startsAt)->addDays(3);
         $cfpStartsAt = now()->subMonths(1);
         $cfpEndsAt = (clone $cfpStartsAt)->addMonths(1);
+
         return [
             'title' => $this->faker->sentence(),
-            'location' => $this->faker->city().', '.$this->faker->country(),
+            'location' => $this->faker->city() . ', ' . $this->faker->country(),
             'description' => $this->faker->paragraph(),
             'url' => $this->faker->url(),
             'starts_at' => $startsAt,

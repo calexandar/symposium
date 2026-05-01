@@ -15,12 +15,12 @@ test('a user can update a talk', function () {
             'type' => TalkType::KEYNOTE->value,
             'abstract' => 'Updated abstract.',
             'organizer_notes' => 'Updated organizer notes.',
-    ]);
+        ]);
 
     $response
         ->assertSessionHasNoErrors()
         ->assertRedirect(route('talks.show', $talk));
-    
+
     $this->assertEquals($talk->fresh()->title, 'Updated Talk Title');
 });
 
@@ -38,10 +38,10 @@ test('a user cannot update a talk that belongs to another user', function () {
             'type' => TalkType::KEYNOTE->value,
             'abstract' => 'Updated abstract.',
             'organizer_notes' => 'Updated organizer notes.',
-    ]);
+        ]);
 
     $response
         ->assertForbidden();
-    
+
     $this->assertEquals($talk->fresh()->title, $originalTItle);
 });

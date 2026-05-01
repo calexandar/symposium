@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()
-        ->has(Talk::factory()->count(5))    
-        ->create([
-            'name' => 'Aleksandar Cvetanovski',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
-        ]);
+            ->has(Talk::factory()->count(5))
+            ->create([
+                'name' => 'Aleksandar Cvetanovski',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('password'),
+            ]);
 
         Conference::factory()->count(5)->create();
     }
