@@ -19,7 +19,7 @@ test('a user can create a talk', function () {
         ]);
 
     $response->assertRedirect(route('talks.index'));
-  assertDatabaseHas('talks', [
-        'title' => $title,
-    ]);
+    assertDatabaseHas('talks', [
+            'title' => $title,
+        ]);
 });
