@@ -1,7 +1,25 @@
 <?php
 
-test('example', function () {
-    $response = $this->get('/');
+use App\Enums\TalkType;
+use App\Models\User;
 
-    $response->assertStatus(200);
+use function Pest\Laravel\assertDatabaseHas;
+
+test('a user can create a talk', function () {
+    $user = User::factory()->create();
+
+    $response = $this
+        ->actingAs($user)
+        ->post(route('talks.store'), [
+            'title' => $title = fake()->sentence(),
+            'length' => 30,
+            'type' => TalkType::KEYNOTE->value,
+            'abstract' => 'This is the abstract of my first talk.',
+            'organizer_notes' => 'These are some notes for the organizers.',
+        ]);
+
+    $response->assertRedirect(route('talks.index'));
+  assertDatabaseHas('talks', [
+        'title' => $title,
+    ]);
 });
