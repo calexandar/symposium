@@ -49,6 +49,9 @@ class TalkController extends Controller
      */
     public function show(Talk $talk)
     {
+         if ($talk->user_id !== Auth::id()) {
+            abort(403);
+        }
         return view('talks.show', ['talk' => $talk]);
     }
 
