@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         ->has(Talk::factory()->count(5))    
         ->create([
             'name' => 'Aleksandar Cvetanovski',
-            'email' => 'alexandercvet243@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
         ]);
 
