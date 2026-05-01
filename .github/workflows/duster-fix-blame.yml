@@ -22,7 +22,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
       - name: "Duster Fix"
-        uses: tighten/duster-action@v3
+        uses: tighten/duster-action@v4
         with:
           args: fix
 
