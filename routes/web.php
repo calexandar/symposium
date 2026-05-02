@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ConferenceController;
+use App\Http\Controllers\ConferenceFavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TalkController;
 use App\Models\User;
@@ -12,7 +14,8 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard', function () {
-    return view('dashboard');
+    $conferences = \App\Models\Conference::all();
+    return view('dashboard', compact('conferences'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -27,7 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('talks/{talk}/edit', [TalkController::class, 'edit'])->name('talks.edit');
     Route::patch('talks/{talk}', [TalkController::class, 'update'])->name('talks.update');
     Route::delete('talks/{talk}', [TalkController::class, 'destroy'])->name('talks.destroy');
+
+    Route::post('conferences/{conference}/favorite', [ConferenceFavoriteController::class, 'store'])->name('conferences.favorite');
+    Route::delete('conferences/{conference}/favorite', [ConferenceFavoriteController::class, 'destroy'])->name('conferences.unfavorite');
+
 });
+
 
 require __DIR__ . '/auth.php';
 

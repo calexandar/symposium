@@ -18,19 +18,20 @@ class ImportConferences extends Command
     public function handle(CallingAllPapers $cfps): void
     {
         foreach ($cfps->conferences()['cfps'] as $conference) {
-            $this->importOrUpdateConference($conference);
+            $this->importOrUpdateConferences($conference);
         }
     }
 
     public function importOrUpdateConferences(array $conference)
     {
+        //dd($conference);
         Conference::updateOrCreate([
             'external_id' => $conference['_rel']['cfp_uri'],
         ], [
             'title' => $conference['name'],
-            'url' => $conference['url'],
-            'cfp_starts_at' => $conference['start_date'],
-            'cfp_ends_at' => $conference['end_date'],
+            'url' => $conference['uri'],
+            'cfp_starts_at' => $conference['dateCfpStart'],
+            'cfp_ends_at' => $conference['dateCfpEnd'],
         ]);
     }
 }
