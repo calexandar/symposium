@@ -8,9 +8,9 @@ test('it imports conferences', function (): void {
 
     $data = [
         'name' => 'Test Conference',
-        'url' => 'https://example.com',
-        'start_date' => '2024-01-01',
-        'end_date' => '2024-01-02',
+        'uri' => 'https://example.com',
+        'dateCfpStart' => '2024-01-01',
+        'dateCfpEnd' => '2024-01-02',
         '_rel' => [
             'cfp_uri' => 'test-conference',
         ],
@@ -32,9 +32,9 @@ test('it updates conferences', function (): void {
 
     $data = [
         'name' => 'Test Conference',
-        'url' => 'https://example.com',
-        'start_date' => '2024-01-01',
-        'end_date' => '2024-01-02',
+        'uri' => 'https://example.com',
+        'dateCfpStart' => '2024-01-01',
+        'dateCfpEnd' => '2024-01-02',
         '_rel' => [
             'cfp_uri' => 'test-conference',
         ],
