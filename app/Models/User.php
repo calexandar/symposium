@@ -29,6 +29,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    #[\Override]
     protected function casts(): array
     {
         return [
@@ -37,6 +38,9 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Conference, $this, \Illuminate\Database\Eloquent\Relations\Pivot>
+     */
     public function favoriteConferences(): BelongsToMany
     {
         return $this->belongsToMany(Conference::class, 'favorites');

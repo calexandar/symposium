@@ -16,6 +16,7 @@
         "laravel/tinker": "^3.0"
     },
     "require-dev": {
+        "driftingly/rector-laravel": "^2.3",
         "fakerphp/faker": "^1.23",
         "laravel/boost": "^2.2",
         "laravel/breeze": "^2.4",
@@ -26,7 +27,7 @@
         "nunomaduro/collision": "^8.6",
         "pestphp/pest": "^4.6",
         "pestphp/pest-plugin-laravel": "^4.1",
-        "tightenco/duster": "^3.4"
+        "rector/rector": "^2.4"
     },
     "autoload": {
         "psr-4": {
@@ -75,6 +76,10 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "test-rector": [
+            "vendor/bin/rector --dry-run",
+            "@php artisan test"
         ]
     },
     "extra": {

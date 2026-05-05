@@ -4,7 +4,7 @@ use App\Enums\TalkType;
 use App\Models\Talk;
 use App\Models\User;
 
-test('a user can update a talk', function () {
+test('a user can update a talk', function (): void {
     $talk = Talk::factory()->create();
 
     $response = $this
@@ -24,7 +24,7 @@ test('a user can update a talk', function () {
     $this->assertEquals($talk->fresh()->title, 'Updated Talk Title');
 });
 
-test('a user cannot update a talk that belongs to another user', function () {
+test('a user cannot update a talk that belongs to another user', function (): void {
     $talk = Talk::factory()->create();
     $originalTItle = $talk->title;
 

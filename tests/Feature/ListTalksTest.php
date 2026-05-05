@@ -3,7 +3,7 @@
 use App\Models\Talk;
 use App\Models\User;
 
-test('it lists all talks on the listing page', function () {
+test('it lists all talks on the listing page', function (): void {
     $user = User::factory()
         ->has(Talk::factory()->count(5))
         ->create();
@@ -18,7 +18,7 @@ test('it lists all talks on the listing page', function () {
     $response->assertStatus(200);
 });
 
-test('it shows basic talk information on the listing page', function () {
+test('it shows basic talk information on the listing page', function (): void {
     $user = User::factory()
         ->has(Talk::factory()->count(5))
         ->create();
@@ -33,7 +33,7 @@ test('it shows basic talk information on the listing page', function () {
     $response->assertStatus(200);
 });
 
-test('users cant see the talk sho page for others', function () {
+test('users cant see the talk sho page for others', function (): void {
     $user = User::factory()
         ->has(Talk::factory()->count(5))
         ->create();

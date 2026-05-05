@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('conferences', function (Blueprint $table) {
+        Schema::create('conferences', function (Blueprint $table): void {
             $table->id();
             $table->string('external_id')->nullable();
             $table->string('title')->nullable();

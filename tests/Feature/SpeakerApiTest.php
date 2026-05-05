@@ -2,7 +2,7 @@
 
 use Illuminate\Testing\Fluent\AssertableJson;
 
-test('it gets speakers from the api', function () {
+test('it gets speakers from the api', function (): void {
    $response = $this->get('/api/speakers');
 
     $response

@@ -3,7 +3,7 @@
 use App\Console\Commands\ImportConferences;
 use App\Models\Conference;
 
-test('it imports conferences', function () {
+test('it imports conferences', function (): void {
     $command = new ImportConferences;
 
     $data = [
@@ -22,7 +22,7 @@ test('it imports conferences', function () {
     expect($firstConference->external_id)->toBe('test-conference');
 });
 
-test('it updates conferences', function () {
+test('it updates conferences', function (): void {
     $command = new ImportConferences;
 
     Conference::create([

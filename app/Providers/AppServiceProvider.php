@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
+    #[\Override]
     public function register(): void
     {
         //
@@ -22,10 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        RateLimiter::for('public_api', function (Request $request) {
-            return $request->user()
-                ? Limit::perMinute(100)->by($request->user()->id)
-                : Limit::perMinute(10)->by($request->ip());
-        });
+        RateLimiter::for('public_api', fn(Request $request) => $request->user()
+            ? Limit::perMinute(100)->by($request->user()->id)
+            : Limit::perMinute(10)->by($request->ip()));
     }
 }

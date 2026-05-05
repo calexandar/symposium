@@ -3,7 +3,7 @@
 use App\Models\Conference;
 use App\Models\User;
 
-test('it favorite a conference', function () {
+test('it favorite a conference', function (): void {
     $conference = Conference::factory()->create();
     $user = User::factory()->create();
 
@@ -14,7 +14,7 @@ test('it favorite a conference', function () {
     $this->assertTrue($user->favoriteConferences()->where('conference_id', $conference->id)->exists());
 });
 
-test('it unfavorite a conference', function () {
+test('it unfavorite a conference', function (): void {
     $conference = Conference::factory()->create();
     $user = User::factory()->create();
 

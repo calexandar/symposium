@@ -5,7 +5,7 @@ use App\Models\User;
 
 use function Pest\Laravel\assertDatabaseHas;
 
-test('a user can create a talk', function () {
+test('a user can create a talk', function (): void {
     $user = User::factory()->create();
 
     $response = $this
